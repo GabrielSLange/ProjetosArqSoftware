@@ -18,5 +18,3 @@ console.log(estoque.listaProduto)
 estoque.atualizarQuantidade(2, 10)
 
 console.log(estoque.listaProduto)
-
-console.log("tetetet")
