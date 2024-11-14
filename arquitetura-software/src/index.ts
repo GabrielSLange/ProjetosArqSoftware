@@ -1,20 +1,22 @@
-import { Estoque } from "./model/estoque";
-import { Produto } from "./model/produto";
+import { Biblioteca } from "./model/Biblioteca"
+import { Livro } from "./model/Livro"
 
-const produto1 = new Produto(1, "Chocolate", 5.00, 2)
-const estoque = new Estoque()
+/* Declaração das 3 instancias de livro pedidas no exercicio */
+let livro1: Livro = new Livro(1, "João e Maria", "Desconhecido", true)
+let livro2: Livro = new Livro(2, "Biblia", "Vários", true)
+let livro3: Livro = new Livro(3, "José do Agito", "José", false)
 
-estoque.adicionarProduto(new Produto(1, "Chocolate1", 5.10, 2))
-estoque.adicionarProduto(new Produto(2, "Chocolate2", 5.20, 3))
-estoque.adicionarProduto(new Produto(3, "Chocolate3", 5.30, 4))
-estoque.adicionarProduto(new Produto(4, "Chocolate4", 5.40, 5))
-estoque.adicionarProduto(new Produto(5, "Chocolate5", 5.50, 6))
-estoque.adicionarProduto(new Produto(6, "Chocolate6", 5.60, 7))
-estoque.adicionarProduto(new Produto(7, "Chocolate7", 5.70, 8))
+/* Instancia a biblioteca */
+let biblioteca: Biblioteca = new Biblioteca()
 
+/* Utiliza a função adicionarLivro para adicionar as 3 instancia de livros criadas na biblioteca */
+biblioteca.adicionarLivro(livro1)
+biblioteca.adicionarLivro(livro2)
+biblioteca.adicionarLivro(livro3)
 
-console.log(estoque.listaProduto)
+/* Registra emprestimo no livro com código 2 */
+biblioteca.registrarEmprestimo(2)
 
-estoque.atualizarQuantidade(2, 10)
-
-console.log(estoque.listaProduto)
+/* Exibe a disponibilidade dos livro na tela buscando pelo seu código */
+console.log(biblioteca.consultarDisponibilidade(2) ? "Disponível" : "Indisponível")
+console.log(biblioteca.consultarDisponibilidade(1) ? "Disponível" : "Indisponível")
