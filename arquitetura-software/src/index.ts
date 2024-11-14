@@ -1,20 +1,23 @@
-import { Estoque } from "./model/estoque";
-import { Produto } from "./model/produto";
+import { Empresa } from "./model/Empresa";
+import { Funcionario } from "./model/Funcionario";
 
-const produto1 = new Produto(1, "Chocolate", 5.00, 2)
-const estoque = new Estoque()
+/* Cria 3 instancias de funcionarios diferentes */
+let funcionario1: Funcionario = new Funcionario(123, "João", "Recepcionista", 1412.00)
+let funcionario2: Funcionario = new Funcionario(456, "Vilmar", "Gerente", 14120.00)
+let funcionario3: Funcionario = new Funcionario(789, "Agner", "Estágiario", 1200.00)
 
-estoque.adicionarProduto(new Produto(1, "Chocolate1", 5.10, 2))
-estoque.adicionarProduto(new Produto(2, "Chocolate2", 5.20, 3))
-estoque.adicionarProduto(new Produto(3, "Chocolate3", 5.30, 4))
-estoque.adicionarProduto(new Produto(4, "Chocolate4", 5.40, 5))
-estoque.adicionarProduto(new Produto(5, "Chocolate5", 5.50, 6))
-estoque.adicionarProduto(new Produto(6, "Chocolate6", 5.60, 7))
-estoque.adicionarProduto(new Produto(7, "Chocolate7", 5.70, 8))
+/* Instancia uma empresa */
+let empresa: Empresa = new Empresa()
 
+/* Executa a função adicionar funcionario na empresa para as 3 instancias de funcionarios criadas  */
+empresa.adicionarFuncionario(funcionario1)
+empresa.adicionarFuncionario(funcionario2)
+empresa.adicionarFuncionario(funcionario3)
 
-console.log(estoque.listaProduto)
+/* Atualiza o salário do estágiario para R$ 900 */
+empresa.atualizarSalario(789, 900)
 
-estoque.atualizarQuantidade(2, 10)
-
-console.log(estoque.listaProduto)
+/* Imprime as informações de um funcionario na tela */
+console.log(empresa.consultarFuncionario(789))
+/* Se não for possível encontrar o funcionario, mostra undefined */
+console.log(empresa.consultarFuncionario(78))
