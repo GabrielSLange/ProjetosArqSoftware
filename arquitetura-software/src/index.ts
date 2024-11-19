@@ -1,20 +1,17 @@
-import { Estoque } from "./model/estoque";
-import { Produto } from "./model/produto";
+import { Reserva } from "./Model/Reserva";
+import { Hotel } from "./Model/Hotel";
 
-const produto1 = new Produto(1, "Chocolate", 5.00, 2)
-const estoque = new Estoque()
+let reserva1: Reserva = new Reserva(100, "Vitor", new Date(), new Date(2025, 0, 20))
+let reserva2: Reserva = new Reserva(101, "Gustavo", new Date(), new Date(2025, 0, 15))
+let reserva3: Reserva = new Reserva(102, "Gabriel", new Date(), new Date(2025, 11, 13))
+let hotel: Hotel = new Hotel([])
 
-estoque.adicionarProduto(new Produto(1, "Chocolate1", 5.10, 2))
-estoque.adicionarProduto(new Produto(2, "Chocolate2", 5.20, 3))
-estoque.adicionarProduto(new Produto(3, "Chocolate3", 5.30, 4))
-estoque.adicionarProduto(new Produto(4, "Chocolate4", 5.40, 5))
-estoque.adicionarProduto(new Produto(5, "Chocolate5", 5.50, 6))
-estoque.adicionarProduto(new Produto(6, "Chocolate6", 5.60, 7))
-estoque.adicionarProduto(new Produto(7, "Chocolate7", 5.70, 8))
+hotel.registrarReserva(reserva1)
+hotel.registrarReserva(reserva2)
+hotel.registrarReserva(reserva3)
 
+hotel.cancelarReserva(10)
+hotel.cancelarReserva(101)
 
-console.log(estoque.listaProduto)
-
-estoque.atualizarQuantidade(2, 10)
-
-console.log(estoque.listaProduto)
+console.log(hotel.consultarStatusQuarto(100))
+console.log(hotel.consultarStatusQuarto(101))
