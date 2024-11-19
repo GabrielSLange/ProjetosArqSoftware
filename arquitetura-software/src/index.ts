@@ -15,3 +15,4 @@ hotel.cancelarReserva(101)
 
 console.log(hotel.consultarStatusQuarto(100))
 console.log(hotel.consultarStatusQuarto(101))
+console.log(hotel.consultarStatusQuarto(101))
