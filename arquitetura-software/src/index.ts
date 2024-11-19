@@ -1,18 +1,21 @@
-import { Reserva } from "./Model/Reserva";
-import { Hotel } from "./Model/Hotel";
 
-let reserva1: Reserva = new Reserva(100, "Vitor", new Date(), new Date(2025, 0, 20))
-let reserva2: Reserva = new Reserva(101, "Gustavo", new Date(), new Date(2025, 0, 15))
-let reserva3: Reserva = new Reserva(102, "Gabriel", new Date(), new Date(2025, 11, 13))
-let hotel: Hotel = new Hotel([])
+import { Tarefa } from "./Model/Tarefa";
+import { GestorTarefas } from "./Model/GestorTarefas";
 
-hotel.registrarReserva(reserva1)
-hotel.registrarReserva(reserva2)
-hotel.registrarReserva(reserva3)
+let tarefa1: Tarefa = new Tarefa(1, "Corrigir funcoes", "Pendente", "Feature nova")
+let tarefa2: Tarefa = new Tarefa(2, "Criar novas Classes", "Concluida", "Correcao de bug no portal")
+let tarefa3: Tarefa = new Tarefa(3, "Realizar testes das novas funcionalidades", "Pendente", "Feature nova")
+let gestorTarefas: GestorTarefas = new GestorTarefas([])
 
-hotel.cancelarReserva(10)
-hotel.cancelarReserva(101)
+gestorTarefas.adicionarTarefa(tarefa1)
+gestorTarefas.adicionarTarefa(tarefa2)
+gestorTarefas.adicionarTarefa(tarefa3)
 
-console.log(hotel.consultarStatusQuarto(100))
-console.log(hotel.consultarStatusQuarto(101))
-console.log(hotel.consultarStatusQuarto(101))
+gestorTarefas.atualizarStatus(4, "Concluida")
+gestorTarefas.atualizarStatus(1, "Concluida")
+
+const tarefasProjeto1: Tarefa[] = gestorTarefas.consultarTarefasPorProjeto("Criacao da nova pagina de atividades")
+console.log(tarefasProjeto1.length != 0 ? tarefasProjeto1 : "Nenhuma tarefa encontrada")
+
+const tarefasProjeto2: Tarefa[] = gestorTarefas.consultarTarefasPorProjeto("Feature nova")
+console.log(tarefasProjeto2.length != 0 ? tarefasProjeto2 : "Nenhuma tarefa encontrada")
