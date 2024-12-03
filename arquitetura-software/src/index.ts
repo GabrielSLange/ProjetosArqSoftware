@@ -1,23 +1,21 @@
-import { Empresa } from "./model/Empresa";
-import { Funcionario } from "./model/Funcionario";
+import { EditorDOCX } from "./model/editorDOCX";
+import { EditorPDF } from "./model/editorPDF";
+import { EditorTXT } from "./model/editorTXT";
+import { EditorXLSX } from "./model/editorXLSX";
 
-/* Cria 3 instancias de funcionarios diferentes */
-let funcionario1: Funcionario = new Funcionario(123, "João", "Recepcionista", 1412.00)
-let funcionario2: Funcionario = new Funcionario(456, "Vilmar", "Gerente", 14120.00)
-let funcionario3: Funcionario = new Funcionario(789, "Agner", "Estágiario", 1200.00)
+const editorPDF = new EditorPDF();
+const editorDOCX = new EditorDOCX();
+const editorXLSX = new EditorXLSX();
+const editorTXT = new EditorTXT();
 
-/* Instancia uma empresa */
-let empresa: Empresa = new Empresa()
+console.log("Gerenciando PDF:");
+editorPDF.gerenciarArquivo();
 
-/* Executa a função adicionar funcionario na empresa para as 3 instancias de funcionarios criadas  */
-empresa.adicionarFuncionario(funcionario1)
-empresa.adicionarFuncionario(funcionario2)
-empresa.adicionarFuncionario(funcionario3)
+console.log("\nGerenciando DOCX:");
+editorDOCX.gerenciarArquivo();
 
-/* Atualiza o salário do estágiario para R$ 900 */
-empresa.atualizarSalario(789, 900)
+console.log("\nGerenciando XLSX:");
+editorXLSX.gerenciarArquivo();
 
-/* Imprime as informações de um funcionario na tela */
-console.log(empresa.consultarFuncionario(789))
-/* Se não for possível encontrar o funcionario, mostra undefined */
-console.log(empresa.consultarFuncionario(78))
+console.log("\nGerenciando TXT:");
+editorTXT.gerenciarArquivo();
