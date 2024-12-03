@@ -1,21 +1,26 @@
-import { EditorDOCX } from "./model/editorDOCX";
-import { EditorPDF } from "./model/editorPDF";
-import { EditorTXT } from "./model/editorTXT";
-import { EditorXLSX } from "./model/editorXLSX";
+import { Tamanho } from "./Enums/Tamanho";
+import { TipoMassa } from "./Enums/TipoMassa";
+import { MargheritaPizzaBuilder } from "./model/MargheritaPizzaBuilder";
+import { PeperoniPizzaBuilder } from "./model/PeperoniPizzaBuilder";
+import { PizzaDirector } from "./model/PizzaDirector";
 
-const editorPDF = new EditorPDF();
-const editorDOCX = new EditorDOCX();
-const editorXLSX = new EditorXLSX();
-const editorTXT = new EditorTXT();
+let director = new PizzaDirector(new MargheritaPizzaBuilder)
 
-console.log("Gerenciando PDF:");
-editorPDF.gerenciarArquivo();
+let pizzaMargherita = director.construirMargherita()
+pizzaMargherita.exibirInformacoes()
 
-console.log("\nGerenciando DOCX:");
-editorDOCX.gerenciarArquivo();
+director.setBuilder(new PeperoniPizzaBuilder)
 
-console.log("\nGerenciando XLSX:");
-editorXLSX.gerenciarArquivo();
+let pepperoniPizza = director.construirPepperoni()
+pepperoniPizza.exibirInformacoes()
 
-console.log("\nGerenciando TXT:");
-editorTXT.gerenciarArquivo();
+let customPizzaBuilder = new MargheritaPizzaBuilder()
+let CustomPizza = customPizzaBuilder.Resetar()
+   .setTamanho(Tamanho.pequeno)
+   .setMassa(TipoMassa.recheada)
+   .adicionarIngrediente("Queijo")
+   .adicionarIngrediente("Tomate")
+   .adicionarIngrediente("Azeitona")
+   .obterResultado()
+
+CustomPizza.exibirInformacoes()
